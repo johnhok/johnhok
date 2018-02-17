@@ -1,0 +1,153 @@
+//
+// Component: Button
+//
+// ========================================================================
+
+
+// General 
+// ========================================================================
+
+@button-line-height:                            1;
+@button-small-line-height:                      @global-control-small-height;
+@button-large-line-height:                      1;
+
+@button-font-size:                              1rem;
+@button-small-font-size:                        @global-small-font-size;
+@button-large-font-size:                        1rem;
+
+//@button-padding-horizontal:                     1.5rem;
+/*@button-small-padding-horizontal:               @global-small-gutter;*/
+/*@button-large-padding-horizontal:               @global-medium-gutter;*/
+
+.hook-button-misc;
+
+.hook-button() {
+  background-color: @color-blue;
+  transition: @transition-200;
+  border-radius: @border-radius-small;
+  font-family: @font-graphik-medium;
+  font-weight: 300;
+  margin-bottom: 0;
+  vertical-align: unset;
+  padding: 16px 32px;
+  font-size: 1rem;
+}
+.hook-button-hover() {
+  transition: @transition-200;
+  box-shadow: @box-shadow-medium;
+}
+.hook-button-focus() {
+  box-shadow: @box-shadow-small;
+}
+.hook-button-active() {}
+.hook-button-small() {
+
+}
+.hook-button-large() {
+  padding: 16px 72px;
+  font-size: 1rem;
+}
+
+
+.hook-button-misc() {}
+
+
+// Default
+// ========================================================================
+
+@button-default-background:                     @color-yellow;
+@button-default-color:                          @color-main;
+@button-default-hover-background:               tint(@color-yellow, 10%);
+@button-default-hover-color:                    @color-main;
+@button-default-active-background:              shade(@color-yellow, 10%);
+@button-default-active-color:                   @color-main;
+
+.hook-button-default() { border: none; }
+.hook-button-default-hover() {}
+.hook-button-default-active() { border: none; }
+
+
+// Primary
+// ========================================================================
+
+@button-primary-background:                     @color-main;
+@button-primary-color:                          @color-white;
+@button-primary-hover-background:               tint(@color-main, 10%);
+@button-primary-hover-color:                    @color-white;
+@button-primary-active-background:              shade(@color-main, 10%);
+@button-primary-active-color:                   @color-white;
+
+.hook-button-primary() {}
+.hook-button-primary-hover() {}
+.hook-button-primary-active() { }
+
+
+// Secondary
+// ========================================================================
+
+@button-secondary-background:                   @color-white !important;
+@button-secondary-color:                        @color-main !important;
+@button-secondary-hover-background:             @color-white !important
+@button-secondary-hover-color:                  @color-main !important;
+@button-secondary-active-background:            @color-white !important;
+@button-secondary-active-color:                 @color-main !important;
+
+.hook-button-secondary() { box-shadow: 0 1px 2px 0 rgba(100,100,100,0.5); transition: @transition-200;}
+.hook-button-secondary-hover() { box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5); transition: @transition-200;}
+.hook-button-secondary-active() { box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5); transition: @transition-200;}
+
+// Danger
+// ========================================================================
+
+@button-danger-background:                      @global-danger-background;
+@button-danger-color:                           @global-inverse-color;
+@button-danger-hover-background:                darken(@button-danger-background, 5%);
+@button-danger-hover-color:                     @global-inverse-color;
+@button-danger-active-background:               darken(@button-danger-background, 10%);
+@button-danger-active-color:                    @global-inverse-color;
+
+.hook-button-danger() {}
+.hook-button-danger-hover() {}
+.hook-button-danger-active() {}
+
+// Link
+// ========================================================================
+
+@button-link-line-height:                       2.6;
+@button-link-color:                             @color-main;
+@button-link-hover-color:                       @color-main;
+@button-link-hover-text-decoration:             none;
+@button-link-disabled-color:                    @global-muted-color;
+
+.hook-button-link() {}
+
+// Text
+// ========================================================================
+
+@button-text-line-height:                       1rem;
+@button-text-color:                             @color-main;
+@button-text-hover-color:                       @color-main;
+@button-text-disabled-color:                    @global-muted-color;
+
+.hook-button-text() {
+  text-align: left;
+  padding: 16px 32px;
+  font-size: 1rem;
+}
+.hook-button-text-hover() {
+  background-color: tint(@color-gray-light, 90%);
+  box-shadow: none;
+
+}
+.hook-button-text-disabled() {}
+
+// Disabled
+// ========================================================================
+
+@button-disabled-background:                    #005E7B;
+@button-disabled-color:                         @color-white;
+
+.hook-button-disabled() {}
+
+
+

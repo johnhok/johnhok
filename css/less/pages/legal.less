@@ -1,0 +1,89 @@
+#legal {
+  background-color: #ECF0F2;
+  .Boxed {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    background-color: @color-white;
+    .Hero-wrapper {
+      position: relative;
+      overflow: hidden;
+      min-height: 45rem;
+      @media @less-then-large {
+        min-height: 38rem;
+      }
+      .Hero {
+        padding-top: 15rem;
+        padding-bottom: 2rem;
+        text-align: center;
+        @media @less-then-medium {
+          padding-bottom: 0;
+        }
+        .Hero-header {
+          max-width: 730px;
+          margin-bottom: 5.6rem;
+          margin-right: auto;
+          margin-left: auto;
+          background-color: #ffffffba;
+          .is-text-uppercase {
+            color: @color-blue;
+            font-size: 0.75rem;
+          }
+          .is-text-lead {
+            max-width: 588px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .Hero-title {
+            padding-bottom: 2.5rem;
+            margin-bottom: 0;
+            color: @color-main;
+          }
+        }
+      }
+      .orange {
+        position: absolute;
+        top: -133px;
+        right: -199px;
+        transition: all 0.4s ease-out;
+        @media @less-then-xlarge {
+          top: -184px;
+          right: -329px;
+        }
+        @media @less-then-large {
+          top: -114px;
+          right: -264px;
+        }
+        @media @less-then-medium {
+          top: -170px;
+          right: -347px;
+        }
+        @media @less-then-small {
+          top: -90px;
+          right: -230px;
+        }
+        &.shape-active {
+          transform:scale(4) rotate(85deg) translateX(0);
+          @media @less-then-medium {
+            transform: scale(6) rotate(85deg) translateX(0);
+          }
+        }
+      }
+    }
+
+    .Main-content {
+      padding: 0 0 3rem 0;
+      background-color: @color-gray-light;
+      .Main-content-wrapper {
+        max-width: 632px;
+        margin-right: auto;
+        margin-left: auto;
+        h3 {
+          margin: 3.5rem 0;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

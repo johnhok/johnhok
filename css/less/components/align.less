@@ -1,0 +1,142 @@
+// Name:            Align
+// Description:     Utilities to align embedded content
+//
+// Component:       `is-align-left-*`
+//                  `is-align-right-*`
+//                  `is-align-center`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@align-margin-horizontal:                       @global-gutter;
+@align-margin-vertical:                         @global-gutter;
+
+@align-margin-horizontal-l:                     @global-medium-gutter;
+
+
+/* ========================================================================
+   Component: Align
+ ========================================================================== */
+
+/*
+ * Default
+ */
+
+[class*='is-align'] {
+    display: block;
+    margin-bottom: @align-margin-vertical;
+}
+
+* + [class*='is-align'] { margin-top: @align-margin-vertical; }
+
+/*
+ * Center
+ */
+
+.is-align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*
+ * Left/Right
+ */
+
+.is-align-left {
+    margin-top: 0;
+    margin-right: @align-margin-horizontal;
+    float: left;
+}
+
+.is-align-right {
+    margin-top: 0;
+    margin-left: @align-margin-horizontal;
+    float: right;
+}
+
+/* Phone landscape and bigger */
+@media (min-width: @breakpoint-small) {
+
+    .is-align-left\@s {
+        margin-top: 0;
+        margin-right: @align-margin-horizontal;
+        float: left;
+    }
+
+    .is-align-right\@s {
+        margin-top: 0;
+        margin-left: @align-margin-horizontal;
+        float: right;
+    }
+
+}
+
+/* Tablet landscape and bigger */
+@media (min-width: @breakpoint-medium) {
+
+    .is-align-left\@m {
+        margin-top: 0;
+        margin-right: @align-margin-horizontal;
+        float: left;
+    }
+
+    .is-align-right\@m {
+        margin-top: 0;
+        margin-left: @align-margin-horizontal;
+        float: right;
+    }
+
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    .is-align-left\@l {
+        margin-top: 0;
+        float: left;
+    }
+
+    .is-align-right\@l {
+        margin-top: 0;
+        float: right;
+    }
+
+    .is-align-left,
+    .is-align-left\@s,
+    .is-align-left\@m,
+    .is-align-left\@l { margin-right: @align-margin-horizontal-l; }
+
+    .is-align-right,
+    .is-align-right\@s,
+    .is-align-right\@m,
+    .is-align-right\@l { margin-left: @align-margin-horizontal-l; }
+
+}
+
+/* Large screen and bigger */
+@media (min-width: @breakpoint-xlarge) {
+
+    .is-align-left\@xl {
+        margin-top: 0;
+        margin-right: @align-margin-horizontal-l;
+        float: left;
+    }
+
+    .is-align-right\@xl {
+        margin-top: 0;
+        margin-left: @align-margin-horizontal-l;
+        float: right;
+    }
+
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-align-misc;
+
+.hook-align-misc() {}

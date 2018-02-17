@@ -1,0 +1,84 @@
+// Name:            Tooltip
+// Description:     Component to create tooltips
+//
+// Component:       `is-tooltip`
+//
+// Modifiers        `is-tooltip-top`
+//                  `is-tooltip-top-left`
+//                  `is-tooltip-top-right`
+//                  `is-tooltip-bottom`
+//                  `is-tooltip-bottom-left`
+//                  `is-tooltip-bottom-right`
+//                  `is-tooltip-left`
+//                  `is-tooltip-right`
+//
+// States:          `is-active`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@tooltip-z-index:                               @global-z-index + 30;
+@tooltip-max-width:                             200px;
+@tooltip-padding-vertical:                      3px;
+@tooltip-padding-horizontal:                    6px;
+@tooltip-background:                            #666;
+@tooltip-border-radius:                         2px;
+@tooltip-color:                                 @global-inverse-color;
+@tooltip-font-size:                             12px;
+
+@tooltip-margin:                                10px;
+
+
+/* ========================================================================
+   Component: Tooltip
+ ========================================================================== */
+
+/*
+ * 1. Hide by default
+ * 2. Position
+ * 3. Dimensions
+ * 4. Style
+ */
+
+.is-tooltip {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: absolute;
+    z-index: @tooltip-z-index;
+    /* 3 */
+    box-sizing: border-box;
+    max-width: @tooltip-max-width;
+    padding: @tooltip-padding-vertical @tooltip-padding-horizontal;
+    /* 4 */
+    background: @tooltip-background;
+    border-radius: @tooltip-border-radius;
+    color: @tooltip-color;
+    font-size: @tooltip-font-size;
+    .hook-tooltip;
+}
+
+/* Show */
+.is-tooltip.is-active { display: block; }
+
+
+/* Direction / Alignment modifiers
+ ========================================================================== */
+
+/* Direction */
+[class*='is-tooltip-top'] { margin-top: -@tooltip-margin; }
+[class*='is-tooltip-bottom'] { margin-top: @tooltip-margin; }
+[class*='is-tooltip-left'] { margin-left: -@tooltip-margin; }
+[class*='is-tooltip-right'] { margin-left: @tooltip-margin; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-tooltip-misc;
+
+.hook-tooltip() {}
+.hook-tooltip-misc() {}

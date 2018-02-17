@@ -1,0 +1,102 @@
+//
+// Component: Text
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+@text-small-font-size:                          1.125rem;
+@text-small-line-height:                        1.33;
+
+@text-large-font-size:                          1.375rem;
+@text-large-line-height:                        2;
+
+
+@text-lead-font-size:                           1.25rem;
+@text-lead-line-height:                         1.45;
+@text-lead-color:                               @color-gray;
+
+@text-meta-font-size:                           0.875rem;
+@text-meta-line-height:                         1.715;
+@text-meta-color:                               @color-gray;
+
+//
+// New
+//
+
+@text-meta-link-color:                          @text-meta-color;
+@text-meta-link-hover-color:                    @global-color;
+
+
+// Style modifiers
+// ========================================================================
+
+.hook-text-lead() {
+  font-family: @font-graphik-regular;
+}
+
+.hook-text-meta() {
+
+    a { color: @text-meta-link-color; }
+
+    a:hover {
+        color: @text-meta-link-hover-color;
+        text-decoration: none;
+    }
+
+}
+
+.is-text-uppercase {
+  font-family: @font-graphik-medium !important;
+}
+
+// Size modifiers
+// ========================================================================
+
+.is-text{
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.is-text-small {
+  font-size: 1.125rem;
+  line-height: 1.33;
+}
+
+.is-text-large {
+  font-family: @font-graphik-light;
+  font-size:    1.7rem;
+  line-height:  1.35;
+
+}
+
+.is-text-lead-large {
+  font-size: 1.5rem;
+  line-height: 1.7;
+  font-family: @font-graphik-regular;
+}
+
+.hook-text-small() {}
+
+.hook-text-large() {}
+
+
+// Background modifier
+// ========================================================================
+
+.hook-text-background() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-text-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+.hook-inverse-text-lead() {}
+.hook-inverse-text-meta() {}

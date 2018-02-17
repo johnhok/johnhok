@@ -1,0 +1,213 @@
+#home {
+  background-color: #ECF0F2;
+  .Boxed {
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    background-color: @color-white;
+    .is-text-small {
+      font-size: 0.75rem;
+      font-family: @font-graphik-medium;
+    }
+    .Hero-wrapper {
+      position: relative;
+      overflow: hidden;
+      background-image: url('../img/hero-bg.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: bottom center;
+      .orange {
+        position: absolute;
+        top: -133px;
+        right: -199px;
+        transition: all 0.4s ease-out;
+        @media @less-then-xlarge {
+          top: -184px;
+          right: -329px;
+        }
+        @media @less-then-large {
+          top: -114px;
+          right: -264px;
+        }
+        @media @less-then-medium {
+          top: -170px;
+          right: -347px;
+        }
+        @media @less-then-small {
+          top: -90px;
+          right: -230px;
+        }
+        &.shape-active {
+          transform:scale(4) rotate(85deg) translateX(0);
+          @media @less-then-medium {
+            transform: scale(6) rotate(85deg) translateX(0);
+          }
+        }
+      }
+      .Hero {
+        padding-top: 10rem;
+        text-align: center;
+        @media @less-then-medium {
+          padding-bottom: 4rem;
+        }
+        .Hero-header {
+          max-width: 800px;
+          margin-bottom: 5.6rem;
+          .is-text-uppercase {
+            color: @color-blue;
+          }
+          .is-text-lead {
+            max-width: 588px;
+            margin-left: auto;
+            margin-right: auto;
+          }
+          .Hero-title {
+            padding-bottom: 2.5rem;
+            margin-bottom: 0;
+            color: @color-main;
+          }
+        }
+        .Hero-forward-button {
+          opacity: 0.7;
+          color: @color-black;
+          font-family: @font-graphik-medium;
+          a {
+            .Hero-arrow {
+              margin-right: 0;
+              transition: all 0.25s ease-out;
+              opacity: 0;
+              width: 0;
+              color: @color-blue;
+            }
+            &:hover {
+              .Hero-arrow {
+                display: inline-block;
+                opacity: 1;
+                width: auto;
+                margin-right: 0.5rem;
+                margin-top: -2px;
+                margin-left: 6px;
+              }
+              color: @color-blue;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+
+    .Clients {
+      background-color: @color-purple;
+      padding: 6rem 12rem;
+      @media @less-then-large {
+        padding: 6rem 2rem;
+      }
+      .Clients-text {
+        max-width: 475px;
+        color: @color-white;
+        @media @less-then-medium {
+          max-width: none;
+          .is-text-large {
+            text-align: center;
+          }
+        }
+        .is-text-small {
+          opacity: 0.5;
+          @media @less-then-medium {
+            text-align: center;
+          }
+        }
+      }
+      .Client-logos {
+        @media @less-then-large {
+          text-align: center;
+        }
+        .Client-logo {
+          img {
+            max-height: 2.6rem;
+          }
+        }
+      }
+    }
+
+    .Projects {
+      padding: 4rem 0;
+      @media @less-then-medium {
+        padding-bottom: 0;
+      }
+      .Projects-title {
+        font-family: @font-graphik-medium;
+        max-width: 37rem;
+        margin-right: auto;
+        margin-left: auto;
+        @media @less-then-medium {
+          padding-bottom: 2rem;
+        }
+      }
+      .is-text-small {
+        color: @color-blue;
+      }
+      .Projects-featured {
+        .Project-single {
+          border-radius: 6px;
+          min-height: 19rem;
+          .Project-meta {
+            opacity: 0.7;
+          }
+          &.first {
+            background-color: @color-gray-dark;
+            background-image: url('../img/image1-cut.png');
+            background-repeat: no-repeat;
+            background-size: 55%;
+            background-position: center right;
+            @media @less-then-small {
+              background-image: url('../img/image1.png');
+              background-size: 80%;
+              background-position: center bottom -20px;
+            }
+          }
+          &.second {
+            background-color: @color-navy;
+            background-image: url('../img/image2-cut.png');
+            background-repeat: no-repeat;
+            background-size: 60%;
+            background-position: center right;
+            @media @less-then-small {
+              background-image: url('../img/image2.png');
+              background-size: 85%;
+              background-position: center bottom -10px;
+            }
+          }
+          &.third {
+            min-height: 30rem;
+            display: flex;
+            align-items: center;
+            background-color: @color-red;
+            background-image: url('../img/iMac-cut.png');
+            background-repeat: no-repeat;
+            background-size: 50%;
+            background-position: bottom right;
+            @media @less-then-large {
+              min-height: 23rem;
+              background-size: 55%;
+              background-position: bottom right;
+            }
+            @media @less-then-small {
+              background-size: 70%;
+              background-position: bottom center;
+            }
+            .is-card-header {
+              @media @less-then-large {
+                margin-top: -12rem;
+              }
+            }
+          }
+          @media @less-then-medium {
+            min-height: 23rem;
+          }
+        }
+      }
+    }
+  }
+}

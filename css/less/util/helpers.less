@@ -1,0 +1,65 @@
+// @MEDIA 
+// ========================================================================
+
+@less-then-xlarge: ~"only screen and ( max-width:" @breakpoint-large ~")";
+@less-then-large: ~"only screen and ( max-width:" @breakpoint-medium-max ~")";
+@less-then-medium: ~"only screen and ( max-width:" @breakpoint-small-max ~")";
+@less-then-small: ~"only screen and ( max-width:" @breakpoint-xsmall-max ~")";
+@less-then-xsmall: ~"only screen and ( max-width: 374px)";
+
+@more-then-xxxlarge: ~"only screen and ( min-width:2000px)";
+@more-then-xlarge: ~"only screen and ( min-width:" @breakpoint-xlarge ~")";
+@more-then-large: ~"only screen and ( min-width:" @breakpoint-large ~")";
+@more-then-medium: ~"only screen and ( min-width:" @breakpoint-medium ~")";
+@more-then-small: ~"only screen and ( min-width:" @breakpoint-small ~")";
+@more-then-xsmall: ~"only screen and ( min-width: 375px )";
+
+@from-small-to-medium: ~"only screen and (min-width:" @breakpoint-small ~") and (max-width:" @breakpoint-small-max ~")";
+@from-medium-to-large: ~"only screen and (min-width:" @breakpoint-medium ~") and (max-width:" @breakpoint-medium-max ~")";
+@from-large-to-xlarge: ~"only screen and (min-width:" @breakpoint-large ~") and (max-width:" @breakpoint-large-max ~")";
+
+
+
+// General 
+// ========================================================================
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+  &:focus {
+    outline:none;
+  }
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0,0,0,.01) 0 0 1px;
+  @media @more-then-medium{
+    .is-flex-column{
+      //flex-direction: row !important;
+    }
+  }
+}
+
+
+input::placeholder { /* Chrome/Opera/Safari */
+
+}
+
+.is-color-primary{
+  color: @color-main !important;
+}
+
+.is-color-secondary{
+  color: @color-yellow !important;
+}
+
+.is-color-default{
+  color: @color-white !important;
+}
+
+.has-sr-slide,
+.has-sr-slide-after,
+.has-sr-text,
+.has-sr-image,
+.has-sr-multi,
+.has-sr-sequence{
+  visibility: hidden;
+}

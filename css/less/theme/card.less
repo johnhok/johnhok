@@ -1,0 +1,102 @@
+
+//
+// Component: Card
+//
+// ========================================================================
+
+.hook-card() {
+  border-radius: @border-radius-large;
+    .is-card-body{
+      color: @color-white;
+      opacity: 0.7;
+      padding: 1rem 3rem;
+      @media @less-then-medium {
+        padding: 2rem 4rem;
+      }
+      @media @less-then-small{
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem 4rem;
+      }
+      @media @less-then-xsmall{
+        max-width: 90%;
+      }
+    }
+    .is-card-title,
+    .is-card-header {
+      color: #ffffff;
+    }
+  }
+
+@card-default-background:                      @color-white;
+@card-default-color:                           @color-gray;
+@card-default-title-color:                     @color-blue;
+.hook-card-default() {
+  box-shadow: @box-shadow-large;
+  padding: 3rem 2rem;
+  .is-card-body{
+    padding: 0;
+    @media @less-then-xsmall{
+      text-align: center;
+    }
+    @media @less-then-medium{
+      h5{
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+
+@card-primary-background:                      @global-primary-background;
+@card-primary-color:                           @global-inverse-color;
+@card-primary-title-color:                     @card-primary-color;
+.hook-card-primary() {
+  padding: 32px 16px;
+}
+
+
+@card-secondary-background:                    @color-white;
+@card-secondary-color:                         @color-gray;
+@card-secondary-title-color:                   @color-blue;
+@card-secondary-color-mode:                    dark;
+.hook-card-secondary() {
+  padding: 32px 16px;
+  margin-left: auto;
+  margin-right: auto;
+  .is-card-body{
+    padding: 0;
+    @media @less-then-small{
+      max-width: 100%;
+    }
+    @media @less-then-xsmall{
+      max-width: 90%;
+    }
+  }
+}
+
+
+
+
+//
+// New
+//
+
+@card-hover-box-shadow:                        @box-shadow-large;
+
+@card-default-box-shadow:                      @box-shadow-large;
+@card-default-hover-box-shadow:                @box-shadow-large;
+
+@card-default-header-border-width:             @global-border-width;
+@card-default-header-border:                   @global-border;
+
+@card-default-footer-border-width:             @global-border-width;
+@card-default-footer-border:                   @global-border;
+
+@card-primary-box-shadow:                      @global-medium-box-shadow;
+@card-primary-hover-box-shadow:                @global-large-box-shadow;
+
+@card-secondary-box-shadow:                    none;
+@card-secondary-hover-box-shadow:              @global-large-box-shadow;
+

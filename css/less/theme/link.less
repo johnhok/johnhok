@@ -1,0 +1,66 @@
+//
+// Component: Link
+//
+// ========================================================================
+
+.is-link{
+  color: @color-main;
+  transition: @transition-200;
+  position: relative;
+  &:before{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    border-bottom: 1px solid @color-main;
+    transition: right 0.2s ease-out;
+  }
+
+  &:hover{
+    color: @color-main;
+    &:before{
+      content: "";
+      right: 0;
+    }
+  }
+}
+// Variables
+// ========================================================================
+
+
+// Muted
+// ========================================================================
+
+.hook-link-muted() {}
+
+.hook-link-muted-hover() {}
+
+
+// Text
+// ========================================================================
+
+.hook-link-text() {}
+
+.hook-link-text-hover() {}
+
+
+// Reset
+// ========================================================================
+
+.hook-link-reset() {}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-link-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+.hook-inverse-link-muted() {}
+.hook-inverse-link-muted-hover() {}
+
+.hook-inverse-link-text-hover() {}

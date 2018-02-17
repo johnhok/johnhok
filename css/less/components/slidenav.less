@@ -1,0 +1,142 @@
+// Name:            Slidenav
+// Description:     Component to create previous/next icon navigations
+//
+// Component:       `is-slidenav`
+//
+// Sub-objects:     `is-slidenav-container`
+//
+// Modifiers:       `is-slidenav-previous`
+//                  `is-slidenav-next`
+//                  `is-slidenav-large`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@slidenav-padding-vertical:                     5px;
+@slidenav-padding-horizontal:                   10px;
+
+@slidenav-color:                                fade(@global-color, 50%);
+@slidenav-hover-color:                          fade(@global-color, 90%);
+@slidenav-active-color:                         fade(@global-color, 50%);
+
+@slidenav-large-padding-vertical:               10px;
+@slidenav-large-padding-horizontal:             @slidenav-large-padding-vertical;
+
+
+/* ========================================================================
+   Component: Slidenav
+ ========================================================================== */
+
+/*
+ * Adopts `is-icon`
+ */
+
+.is-slidenav {
+    padding: @slidenav-padding-vertical @slidenav-padding-horizontal;
+    color: @slidenav-color;
+    .hook-slidenav;
+}
+
+/* Hover + Focus */
+.is-slidenav:hover,
+.is-slidenav:focus {
+    color: @slidenav-hover-color;
+    outline: none;
+    .hook-slidenav-hover;
+}
+
+/* OnClick */
+.is-slidenav:active {
+    color: @slidenav-active-color;
+    .hook-slidenav-active;
+}
+
+
+/* Icon modifier
+ ========================================================================== */
+
+/*
+ * Previous
+ */
+
+.is-slidenav-previous {
+    .hook-slidenav-previous;
+}
+
+/*
+ * Next
+ */
+
+.is-slidenav-next {
+    .hook-slidenav-next;
+}
+
+
+/* Size modifier
+ ========================================================================== */
+
+.is-slidenav-large {
+    padding: @slidenav-large-padding-vertical @slidenav-large-padding-horizontal;
+    .hook-slidenav-large;
+}
+
+
+/* Container
+ ========================================================================== */
+
+.is-slidenav-container {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    .hook-slidenav-container;
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-slidenav-misc;
+
+.hook-slidenav() {}
+.hook-slidenav-hover() {}
+.hook-slidenav-active() {}
+.hook-slidenav-previous() {}
+.hook-slidenav-next() {}
+.hook-slidenav-large() {}
+.hook-slidenav-container() {}
+.hook-slidenav-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-slidenav-color:                       fade(@inverse-global-color, 70%);
+@inverse-slidenav-hover-color:                 fade(@inverse-global-color, 95%);
+@inverse-slidenav-active-color:                fade(@inverse-global-color, 70%);
+
+.hook-inverse() {
+
+    .is-slidenav {
+        color: @inverse-slidenav-color;
+        .hook-inverse-slidenav;
+    }
+
+    .is-slidenav:hover,
+    .is-slidenav:focus {
+        color: @inverse-slidenav-hover-color;
+        .hook-inverse-slidenav-hover;
+    }
+
+    .is-slidenav:active {
+        color: @inverse-slidenav-active-color;
+        .hook-inverse-slidenav-active;
+    }
+
+}
+
+.hook-inverse-slidenav() {}
+.hook-inverse-slidenav-hover() {}
+.hook-inverse-slidenav-active() {}

@@ -1,0 +1,133 @@
+.Contact {
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6rem;
+  .Contact-header {
+    max-width: 33rem;
+    margin-left: auto;
+    margin-right: auto;
+    h3 {
+      font-family: @font-graphik-medium;
+    }
+  }
+  .Contact-form {
+    margin-top: 3.75rem;
+    .is-grid-small {
+      margin: 0 auto;
+    }
+    .is-grid-small>* {
+      padding-left: 1.25rem;
+      @media @less-then-medium {
+        padding-left: 0.5rem;
+      }
+      @media @less-then-small {
+        padding-left: 0;
+      }
+    }
+    .is-input,
+    .is-textarea {
+      border: 2px solid @color-gray-light;
+      border-radius: 6px;
+      transition: all 0.25s;
+      &::placeholder {
+        font-size: 1rem;
+        opacity: 0.7;
+      }
+      &:focus, &.focused {
+        border: 2px solid rgba(72,165,198,0.47);
+        transition: all 0.2s;
+      }
+    }
+    .Contact-name {
+      position: relative;
+    }
+    .Contact-email {
+      position: relative;
+    }
+    .Contact-message {
+      margin-top: 20px;
+      position: relative;
+    }
+    label.error, div.mce_inline_error {
+      position: absolute;
+      color: red;
+      font-size: 0.6rem;
+      left: 3px;
+      bottom: -17px;
+    }
+    input.error,
+    textarea.error,
+    input.mce_inline_error,
+    textarea.mce_inline_error {
+      border: 2px solid rgba(255,0,0,0.35);
+    }
+    .is-input {
+      min-height: 60px;
+      padding-left: 16px;
+    }
+    .is-textarea {
+      resize: none;
+      padding-top: 16px;
+      padding-left: 16px;
+    }
+    .Contact-button {
+      display: block;
+      color: @color-white;
+      margin-top: 20px;
+      min-height: 60px;
+      padding: 22px 72px;
+    }
+    .result {
+      position: absolute;
+      bottom: 96px;
+      font-size: 1rem;
+      &.success {
+        color: green;
+      }
+      &.error {
+        color: red;
+      }
+    }
+  }
+  .Contact-alternative {
+    margin-top: 2.5rem;
+    text-align: center;
+    opacity: 0.7;
+    .Contact-hr {
+      margin-top: 6px;
+      width: 180px;
+      height: 2px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    a {
+      .Contact-link {
+        text-decoration: none;
+        transition: all 0.25s;
+        position: relative;
+        max-width: 180px;
+        margin-left: auto;
+        margin-right: auto;
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: -1rem;
+          left: 0;
+          right: 100%;
+          border-bottom: 2px solid @color-blue;
+          -webkit-transition: right 0.2s ease-out;
+          -o-transition: right 0.2s ease-out;
+          transition: right 0.2s ease-out;
+        }
+        &:hover:before {
+          content: "";
+          right: 0;
+        }
+      }
+      &:hover {
+        color: @color-blue;
+      }
+    }
+  }
+}

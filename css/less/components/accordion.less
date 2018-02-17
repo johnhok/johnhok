@@ -1,0 +1,112 @@
+// Name:            Accordion
+// Description:     Component to create accordions
+//
+// Component:       `is-accordion`
+//
+// Sub-objects:     `is-accordion-title`
+//                  `is-accordion-content`
+//
+// States:          `is-open`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@accordion-item-margin-top:                    @global-margin;
+
+@accordion-title-font-size:                    @global-medium-font-size;
+@accordion-title-line-height:                  1.4;
+
+@accordion-content-margin-top:                 @global-margin;
+
+
+/* ========================================================================
+   Component: Accordion
+ ========================================================================== */
+
+.is-accordion {
+    padding: 0;
+    list-style: none;
+    .hook-accordion;
+}
+
+
+/* Item
+ ========================================================================== */
+
+.is-accordion > :nth-child(n+2) {
+    margin-top: @accordion-item-margin-top;
+    .hook-accordion-item;
+}
+
+
+/* Title
+ ========================================================================== */
+
+.is-accordion-title {
+    margin: 0;
+    font-size: @accordion-title-font-size;
+    line-height: @accordion-title-line-height;
+    cursor: pointer;
+    .hook-accordion-title;
+}
+
+
+/* Content
+ ========================================================================== */
+
+.is-accordion-content {
+    margin-top: @accordion-content-margin-top;
+    .hook-accordion-content;
+}
+
+/*
+ * Micro clearfix
+ */
+
+.is-accordion-content::before,
+.is-accordion-content::after {
+    content: "";
+    display: table;
+}
+
+.is-accordion-content::after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+ .is-accordion-content > :last-child { margin-bottom: 0; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-accordion-misc;
+
+.hook-accordion() {}
+.hook-accordion-item() {}
+.hook-accordion-title() {}
+.hook-accordion-content() {}
+.hook-accordion-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+.hook-inverse() {
+
+    .is-accordion > :nth-child(n+2) {
+        .hook-inverse-accordion-item;
+    }
+
+    .is-accordion-title {
+        .hook-inverse-accordion-title;
+    }
+
+}
+
+.hook-inverse-accordion-item() {}
+.hook-inverse-accordion-title() {}

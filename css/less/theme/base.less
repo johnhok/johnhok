@@ -1,0 +1,230 @@
+//
+// Component: Base
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@base-link-color:                               @color-main;
+@base-link-text-decoration:                     none;
+@base-link-hover-color:                         @color-main;
+@base-link-hover-text-decoration:               none;
+
+@base-margin-vertical:                          @global-margin;
+
+@base-heading-font-family:                      @font-graphik-light;
+@base-heading-font-weight:                      300;
+@base-heading-color:                            @color-black;
+@base-heading-text-transform:                   none;
+@base-heading-margin-top:                       0;
+
+//ako je jedan rem = 8px kao sto je navedeno u @base
+//nevrmind ipak je 16px. ovo je sad kako treba
+
+@base-h1-font-size:                             3.5rem;
+@base-h1-line-height:                           4.5rem;
+@base-h2-font-size:                             2.75rem;
+@base-h2-line-height:                           3.5rem;
+@base-h3-font-size:                             2.25rem;
+@base-h3-line-height:                           3rem;
+@base-h4-font-size:                             1.5rem;
+@base-h4-line-height:                           2.5rem;
+@base-h5-font-size:                             1.33rem;
+@base-h5-line-height:                           2rem;
+@base-h6-font-size:                             1rem;
+@base-h6-line-height:                           1.5rem;
+
+
+@base-hr-margin-vertical:                       @global-margin;
+@base-hr-border-width:                          1px;
+@base-hr-border:                                @global-border;
+//
+// New
+//
+
+@base-code-padding-horizontal:                  6px;
+@base-code-padding-vertical:                    2px;
+@base-code-background:                          @global-muted-background;
+
+@base-blockquote-color:                         @global-emphasis-color;
+
+@base-blockquote-footer-color:                  @global-color;
+
+@base-pre-padding:                              10px;
+@base-pre-background:                           @global-background;
+@base-pre-border-width:                         @global-border-width;
+@base-pre-border:                               @global-border;
+@base-pre-border-radius:                        3px;
+
+
+// Body
+// ========================================================================
+
+.hook-base-body() {
+  color: @color-gray;
+  @media @less-then-medium{
+      font-size: 14px;
+  }
+  @media @less-then-xsmall{
+   /* section{
+      text-align: center !important;
+    }*/
+  }
+  @media @less-then-xsmall{
+    font-size: 13px;
+  }
+  * + p,
+  * + ul,
+  * + ol,
+  * + dl,
+  * + pre,
+  * + address,
+  * + fieldset,
+  * + figure { margin-top: 0; }
+  p{
+      margin-bottom: @global-line-height;
+  }
+  figure{
+    text-align: center;
+  }
+  .is-grid + .is-grid-small,
+  .is-grid-small > .is-grid-margin,
+  * + .is-grid-margin-small { margin-top: 1.5rem; }
+
+  header > h1,
+  header > h2,
+  header > h3,
+  header > h4,
+  header > h5{
+    margin: 0 0 1.5rem 0;
+  }
+
+
+    overflow-x: hidden;
+
+}
+
+
+
+// Links
+// ========================================================================
+
+.hook-base-link() {}
+
+.hook-base-link-hover() {}
+
+
+// Text-level semantics
+// ========================================================================
+
+.hook-base-code() {
+    padding: @base-code-padding-vertical @base-code-padding-horizontal;
+    background: @base-code-background;
+}
+
+
+// Headings
+// ========================================================================
+
+.hook-base-heading() {margin: 0 0 0 0;}
+
+.hook-base-h1() {
+  @media @less-then-medium {
+    font-size: 2.5rem;
+    line-height: 1.4;
+  }
+}
+
+.hook-base-h2() {
+  font-family: @font-graphik-medium;
+}
+
+.hook-base-h3() {
+  font-family: @font-graphik-regular;
+  color: @color-main;
+    @media @less-then-medium {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+}
+
+.hook-base-h4() {font-family: @font-graphik-medium;}
+
+.hook-base-h5() {
+  font-family: @font-graphik-medium;
+}
+
+.hook-base-h6() {
+  font-family:  @font-graphik-medium;
+
+ /* text-transform: uppercase;*/
+}
+
+
+// Horizontal rules
+// ========================================================================
+
+.hook-base-hr() {}
+
+
+// Blockquotes
+// ========================================================================
+
+.hook-base-blockquote() {
+    color: @base-blockquote-color;
+}
+
+.hook-base-blockquote-footer() {
+
+    color: @base-blockquote-footer-color;
+
+    &::before { content: "— "; }
+
+}
+
+
+// Preformatted text
+// ========================================================================
+
+.hook-base-pre() {
+    padding: @base-pre-padding;
+    border: @base-pre-border-width solid @base-pre-border;
+    border-radius: @base-pre-border-radius;
+    background: @base-pre-background;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-base-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-base-blockquote-color:                @inverse-global-emphasis-color;
+@inverse-base-blockquote-footer-color:         @inverse-global-color;
+
+.hook-inverse-base-link() {}
+.hook-inverse-base-link-hover() {}
+
+.hook-inverse-base-code() {
+    background: @inverse-global-muted-background;
+}
+
+.hook-inverse-base-heading() {}
+
+.hook-inverse-base-h1() {}
+.hook-inverse-base-h2() {}
+.hook-inverse-base-h3() {}
+.hook-inverse-base-h4() {}
+.hook-inverse-base-h5() {}
+.hook-inverse-base-h6() {}
+
+.hook-inverse-base-blockquote() { color: @inverse-base-blockquote-color; }
+.hook-inverse-base-blockquote-footer() { color: @inverse-base-blockquote-footer-color; }
+
+.hook-inverse-base-hr() {}

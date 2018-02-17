@@ -1,0 +1,113 @@
+// Name:            Article
+// Description:     Component to create articles
+//
+// Component:       `is-article`
+//
+// Sub-objects:     `is-article-title`
+//                  `is-article-meta`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@article-margin-top:                            @global-large-margin;
+
+@article-title-font-size:                       @global-xxlarge-font-size;
+@article-title-line-height:                     1.2;
+
+@article-meta-font-size:                        @global-small-font-size;
+@article-meta-line-height:                      1.4;
+@article-meta-color:                            @global-muted-color;
+
+
+/* ========================================================================
+   Component: Article
+ ========================================================================== */
+
+.is-article {
+    .hook-article;
+}
+
+/*
+ * Micro clearfix
+ */
+
+.is-article::before,
+.is-article::after {
+    content: "";
+    display: table;
+}
+
+.is-article::after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.is-article > :last-child { margin-bottom: 0; }
+
+
+/* Adjacent sibling
+ ========================================================================== */
+
+.is-article + .is-article {
+    margin-top: @article-margin-top;
+    .hook-article-adjacent;
+}
+
+
+/* Title
+ ========================================================================== */
+
+.is-article-title {
+    font-size: @article-title-font-size;
+    line-height: @article-title-line-height;
+    .hook-article-title;
+}
+
+
+/* Meta
+ ========================================================================== */
+
+.is-article-meta {
+    font-size: @article-meta-font-size;
+    line-height: @article-meta-line-height;
+    color: @article-meta-color;
+    .hook-article-meta;
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-article-misc;
+
+.hook-article() {}
+.hook-article-adjacent() {}
+.hook-article-title() {}
+.hook-article-meta() {}
+.hook-article-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-article-meta-color:                   @inverse-global-muted-color;
+
+.hook-inverse() {
+
+    .is-article-title  {
+        .hook-inverse-article-title;
+    }
+
+    .is-article-meta  {
+        color: @inverse-article-meta-color;
+        .hook-inverse-article-meta;
+    }
+
+}
+
+.hook-inverse-article-title() {}
+.hook-inverse-article-meta() {}

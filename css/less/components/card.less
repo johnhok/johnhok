@@ -1,0 +1,363 @@
+// Name:            Card
+// Description:     Component to create boxed content containers
+//
+// Component:       `is-card`
+//
+// Sub-objects:     `is-card-body`
+//                  `is-card-header`
+//                  `is-card-footer`
+//                  `is-card-media-*`
+//                  `is-card-title`
+//                  `is-card-badge`
+//
+// Modifiers:       `is-card-hover`
+//                  `is-card-default`
+//                  `is-card-primary`
+//                  `is-card-secondary`
+//                  `is-card-small`
+//                  `is-card-large`
+//
+// Uses:            `is-grid-stack`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@card-body-padding-horizontal:                 @global-gutter;
+@card-body-padding-vertical:                   @global-gutter;
+
+@card-body-padding-horizontal-l:               @global-medium-gutter;
+@card-body-padding-vertical-l:                 @global-medium-gutter;
+
+@card-header-padding-horizontal:               @global-gutter;
+@card-header-padding-vertical:                 round(@global-gutter / 2);
+
+@card-header-padding-horizontal-l:             @global-medium-gutter;
+@card-header-padding-vertical-l:               round(@global-medium-gutter / 2);
+
+@card-footer-padding-horizontal:               @global-gutter;
+@card-footer-padding-vertical:                 (@global-gutter / 2);
+
+@card-footer-padding-horizontal-l:             @global-medium-gutter;
+@card-footer-padding-vertical-l:               round(@global-medium-gutter / 2);
+
+@card-title-font-size:                         @global-large-font-size;
+@card-title-line-height:                       1.4;
+
+@card-badge-top:                               @global-gutter;
+@card-badge-right:                             @card-badge-top;
+
+@card-hover-background:                        @global-muted-background;
+
+@card-default-background:                      @global-muted-background;
+@card-default-color:                           @global-color;
+@card-default-title-color:                     @global-emphasis-color;
+@card-default-hover-background:                darken(@card-default-background, 5%);
+
+@card-primary-background:                      @global-primary-background;
+@card-primary-color:                           @global-inverse-color;
+@card-primary-title-color:                     @card-primary-color;
+@card-primary-hover-background:                darken(@card-primary-background, 5%);
+@card-primary-color-mode:                      light;
+
+@card-secondary-background:                    @global-secondary-background;
+@card-secondary-color:                         @global-inverse-color;
+@card-secondary-title-color:                   @card-secondary-color;
+@card-secondary-hover-background:              darken(@card-secondary-background, 5%);
+@card-secondary-color-mode:                    light;
+
+@card-small-body-padding-horizontal:           @global-margin;
+@card-small-body-padding-vertical:             @global-margin;
+@card-small-header-padding-horizontal:         @global-margin;
+@card-small-header-padding-vertical:           round(@global-margin / 1.5);
+@card-small-footer-padding-horizontal:         @global-margin;
+@card-small-footer-padding-vertical:           round(@global-margin / 1.5);
+
+@card-large-body-padding-horizontal-l:         @global-large-gutter;
+@card-large-body-padding-vertical-l:           @global-large-gutter;
+@card-large-header-padding-horizontal-l:       @global-large-gutter;
+@card-large-header-padding-vertical-l:         round(@global-large-gutter / 2);
+@card-large-footer-padding-horizontal-l:       @global-large-gutter;
+@card-large-footer-padding-vertical-l:         round(@global-large-gutter / 2);
+
+
+/* ========================================================================
+   Component: Card
+ ========================================================================== */
+
+.is-card {
+    position: relative;
+    box-sizing: border-box;
+    .hook-card;
+}
+
+
+/* Sections
+ ========================================================================== */
+
+.is-card-body {
+    padding: @card-body-padding-vertical @card-body-padding-horizontal;
+    .hook-card-body;
+}
+
+.is-card-header {
+    padding: @card-header-padding-vertical @card-header-padding-horizontal;
+    .hook-card-header;
+}
+
+.is-card-footer {
+    padding: @card-footer-padding-vertical @card-footer-padding-horizontal;
+    .hook-card-footer;
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    .is-card-body { padding: @card-body-padding-vertical-l @card-body-padding-horizontal-l; }
+
+    .is-card-header { padding: @card-header-padding-vertical-l @card-header-padding-horizontal-l; }
+
+    .is-card-footer { padding: @card-footer-padding-vertical-l @card-footer-padding-horizontal-l; }
+
+}
+
+/*
+ * Micro clearfix
+ */
+
+.is-card-body::before,
+.is-card-body::after,
+.is-card-header::before,
+.is-card-header::after,
+.is-card-footer::before,
+.is-card-footer::after {
+    content: "";
+    display: table;
+}
+
+.is-card-body::after,
+.is-card-header::after,
+.is-card-footer::after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.is-card-body > :last-child,
+.is-card-header > :last-child,
+.is-card-footer > :last-child { margin-bottom: 0; }
+
+
+/* Media
+ ========================================================================== */
+
+/*
+ * Reserved alignment modifier to style the media element, e.g. with `border-radius`
+ * Implemented by the theme
+ */
+
+[class*='is-card-media'] {
+    .hook-card-media;
+}
+
+.is-card-media-top,
+.is-grid-stack > .is-card-media-left,
+.is-grid-stack > .is-card-media-right  {
+    .hook-card-media-top;
+}
+
+.is-card-media-bottom {
+    .hook-card-media-bottom;
+}
+
+:not(.is-grid-stack) > .is-card-media-left {
+    .hook-card-media-left;
+}
+
+:not(.is-grid-stack) > .is-card-media-right {
+    .hook-card-media-right;
+}
+
+
+/* Title
+ ========================================================================== */
+
+.is-card-title {
+    font-size: @card-title-font-size;
+    line-height: @card-title-line-height;
+    .hook-card-title;
+}
+
+
+/* Badge
+ ========================================================================== */
+
+.is-card-badge {
+    position: absolute;
+    top: @card-badge-top;
+    right: @card-badge-right;
+    z-index: 1;
+    .hook-card-badge;
+}
+
+/*
+ * Remove margin from adjacent element
+ */
+
+.is-card-badge:first-child + * { margin-top: 0; }
+
+
+/* Hover modifier
+ ========================================================================== */
+
+.is-card-hover:not(.is-card-default):not(.is-card-primary):not(.is-card-secondary):hover {
+    background: @card-hover-background;
+    .hook-card-hover;
+}
+
+
+/* Style modifiers
+ ========================================================================== */
+
+/*
+ * Default
+ * Note: Header and Footer are only implemented for the default style
+ */
+
+.is-card-default {
+    background: @card-default-background;
+    color: @card-default-color;
+    .hook-card-default;
+}
+
+.is-card-default .is-card-title {
+    color: @card-default-title-color;
+    .hook-card-default-title;
+}
+
+.is-card-default.is-card-hover:hover {
+    background-color: @card-default-hover-background;
+    .hook-card-default-hover;
+}
+
+.is-card-default .is-card-header {
+    .hook-card-default-header;
+}
+
+.is-card-default .is-card-footer {
+    .hook-card-default-footer;
+}
+
+/*
+ * Primary
+ */
+
+.is-card-primary {
+    background: @card-primary-background;
+    color: @card-primary-color;
+    .hook-card-primary;
+}
+
+.is-card-primary .is-card-title {
+    color: @card-primary-title-color;
+    .hook-card-primary-title;
+}
+
+.is-card-primary.is-card-hover:hover {
+    background-color: @card-primary-hover-background;
+    .hook-card-primary-hover;
+}
+
+// Color Mode
+.is-card-primary.is-card-body:extend(.is-light all) when (@card-primary-color-mode = light) {}
+.is-card-primary > :not([class*='is-card-media']):extend(.is-light all) when (@card-primary-color-mode = light) {}
+.is-card-primary.is-card-body:extend(.is-dark all) when (@card-primary-color-mode = dark) {}
+.is-card-primary > :not([class*='is-card-media']):extend(.is-dark all) when (@card-primary-color-mode = dark) {}
+
+/*
+ * Secondary
+ */
+
+.is-card-secondary {
+    background: @card-secondary-background;
+    color: @card-secondary-color;
+    .hook-card-secondary;
+}
+
+.is-card-secondary .is-card-title {
+    color: @card-secondary-title-color;
+    .hook-card-secondary-title;
+}
+
+.is-card-secondary.is-card-hover:hover {
+    background-color: @card-secondary-hover-background;
+    .hook-card-secondary-hover;
+}
+
+// Color Mode
+.is-card-secondary.is-card-body:extend(.is-light all) when (@card-secondary-color-mode = light) {}
+.is-card-secondary > :not([class*='is-card-media']):extend(.is-light all) when (@card-secondary-color-mode = light) {}
+.is-card-secondary.is-card-body:extend(.is-dark all) when (@card-secondary-color-mode = dark) {}
+.is-card-secondary > :not([class*='is-card-media']):extend(.is-dark all) when (@card-secondary-color-mode = dark) {}
+
+
+/* Size modifier
+ ========================================================================== */
+
+/*
+ * Small
+ */
+
+.is-card-small.is-card-body,
+.is-card-small .is-card-body { padding: @card-small-body-padding-vertical @card-small-body-padding-horizontal; }
+
+.is-card-small .is-card-header { padding: @card-small-header-padding-vertical @card-small-header-padding-horizontal; }
+.is-card-small .is-card-footer { padding: @card-small-footer-padding-vertical @card-small-footer-padding-horizontal; }
+
+/*
+ * Large
+ */
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    .is-card-large.is-card-body,
+    .is-card-large .is-card-body { padding: @card-large-body-padding-vertical-l @card-large-body-padding-horizontal-l; }
+
+    .is-card-large .is-card-header { padding: @card-large-header-padding-vertical-l @card-large-header-padding-horizontal-l; }
+    .is-card-large .is-card-footer { padding: @card-large-footer-padding-vertical-l @card-large-footer-padding-horizontal-l; }
+
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-card-misc;
+
+.hook-card() {}
+.hook-card-body() {}
+.hook-card-header() {}
+.hook-card-footer() {}
+.hook-card-media() {}
+.hook-card-media-top() {}
+.hook-card-media-bottom() {}
+.hook-card-media-left() {}
+.hook-card-media-right() {}
+.hook-card-title() {}
+.hook-card-badge() {}
+.hook-card-hover() {}
+.hook-card-default() {}
+.hook-card-default-title() {}
+.hook-card-default-hover() {}
+.hook-card-default-header() {}
+.hook-card-default-footer() {}
+.hook-card-primary() {}
+.hook-card-primary-title() {}
+.hook-card-primary-hover() {}
+.hook-card-secondary() {}
+.hook-card-secondary-title() {}
+.hook-card-secondary-hover() {}
+.hook-card-misc() {}

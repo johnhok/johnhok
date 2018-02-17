@@ -1,0 +1,632 @@
+// Name:            Utility
+// Description:     Utilities collection
+//
+// Component:       `is-panel-*`
+//                  `is-clearfix`
+//                  `is-float-*`
+//                  `is-overflow-*`
+//                  `is-resize-*`
+//                  `is-display-*`
+//                  `is-inline-*`
+//                  `is-height-*`
+//                  `is-responsive-*`
+//                  `is-preserve-width`
+//                  `is-border-*`
+//                  `is-box-shadow-*`
+//                  `is-box-shadow-bottom`
+//                  `is-dropcap`
+//                  `is-leader`
+//                  `is-logo`
+//                  `is-svg`
+//                  `is-blend-*`
+//                  `is-transform-*`
+//                  `is-transform-origin-*`
+//
+// States:          `is-disabled`
+//                  `is-drag`
+//                  `is-dragover`
+//                  `is-preserve`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@panel-scrollable-height:                       170px;
+@panel-scrollable-padding:                      10px;
+@panel-scrollable-border-width:                 @global-border-width;
+@panel-scrollable-border:                       @global-border;
+
+@height-small-height:                           150px;
+@height-medium-height:                          300px;
+@height-large-height:                           450px;
+
+@border-rounded-border-radius:                  5px;
+
+@box-shadow-duration:                           0.1s;
+
+@box-shadow-bottom-height:                      30px;
+@box-shadow-bottom-border-radius:               100%;
+@box-shadow-bottom-background:                  #444;
+@box-shadow-bottom-blur:                        20px;
+
+@dropcap-margin-right:                          10px;
+@dropcap-font-size:                             ((@global-line-height * 3) * 1em);
+
+@leader-fill-content:                           '.';
+@leader-fill-margin-left:                       @global-small-gutter;
+
+@logo-font-size:                                @global-large-font-size;
+@logo-font-family:                              @global-font-family;
+@logo-color:                                    @global-color;
+@logo-hover-color:                              @global-color;
+
+@dragover-box-shadow:                           0 0 20px rgba(100,100,100,0.3);
+
+
+/* ========================================================================
+   Component: Utility
+ ========================================================================== */
+
+
+/* Panel
+ ========================================================================== */
+
+.is-panel {
+    position: relative;
+    box-sizing: border-box;
+}
+
+/*
+ * Micro clearfix
+ */
+
+.is-panel::before,
+.is-panel::after {
+    content: "";
+    display: table;
+}
+
+.is-panel::after { clear: both; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.is-panel > :last-child { margin-bottom: 0; }
+
+
+/*
+ * Scrollable
+ */
+
+.is-panel-scrollable {
+    height: @panel-scrollable-height;
+    padding: @panel-scrollable-padding;
+    border: @panel-scrollable-border-width solid @panel-scrollable-border;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    resize: both;
+    .hook-panel-scrollable;
+}
+
+
+/* Clearfix
+ ========================================================================== */
+
+/*
+ * 1. `table-cell` is used with `::before` because `table` creates a 1px gap when it becomes a flex item, only in Webkit
+ * 2. `table` is used again with `::after` because `clear` only works with block elements.
+ * Note: `display: block` with `overflow: hidden` is currently not working in the latest Safari
+ */
+
+/* 1 */
+.is-clearfix::before {
+    content: "";
+    display: table-cell;
+}
+
+/* 2 */
+.is-clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Float
+ ========================================================================== */
+
+/*
+ * 1. Prevent content overflow
+ */
+
+.is-float-left { float: left; }
+.is-float-right { float: right; }
+
+/* 1 */
+[class*='is-float-'] { max-width: 100%; }
+
+
+/* Overfow
+ ========================================================================== */
+
+.is-overflow-hidden { overflow: hidden; }
+
+/*
+ * Enable scrollbars if content is clipped
+ */
+
+.is-overflow-auto {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.is-overflow-auto > :last-child { margin-bottom: 0; }
+
+
+/* Resize
+ ========================================================================== */
+
+.is-resize { resize: both; }
+.is-resize-vertical { resize: vertical; }
+
+
+/* Display
+ ========================================================================== */
+
+.is-display-block { display: block !important; }
+.is-display-inline { display: inline !important; }
+.is-display-inline-block { display: inline-block !important; }
+
+
+/* Inline
+ ========================================================================== */
+
+/*
+ * 1. Container fits its content
+ * 2. Create position context
+ * 3. Prevent content overflow
+ * 4. Behave like most inline-block elements
+ * 5. Force hardware acceleration without creating a new stacking context
+ *    to fix 1px glitch when combined with overlays and transitions in Webkit
+ * 6. Clip child elements
+ */
+
+[class*='is-inline'] {
+    /* 1 */
+    display: inline-block;
+    /* 2 */
+    position: relative;
+    /* 3 */
+    max-width: 100%;
+    /* 4 */
+    vertical-align: middle;
+    /* 5 */
+    -webkit-backface-visibility: hidden;
+}
+
+.is-inline-clip {
+    /* 6 */
+    overflow: hidden;
+}
+
+
+/* Height
+ ========================================================================== */
+
+[class*='is-height'] { box-sizing: border-box; }
+
+/*
+ * Only works if parent element has a height set
+ */
+
+.is-height-1-1 { height: 100%; }
+
+/*
+ * Useful to create image teasers
+ */
+
+.is-height-viewport { min-height: 100vh; }
+
+/*
+ * Pixel
+ * Useful for `overflow: auto`
+ */
+
+.is-height-small { height: @height-small-height; }
+.is-height-medium { height: @height-medium-height; }
+.is-height-large { height: @height-large-height; }
+
+.is-height-max-small { max-height: @height-small-height; }
+.is-height-max-medium { max-height: @height-medium-height; }
+.is-height-max-large { max-height: @height-large-height; }
+
+
+/* Responsive objects
+ ========================================================================== */
+
+/*
+ * Preserve original dimensions
+ * Because `img, `video`, `canvas` and  `audio` are already responsive by default, see Base component
+ */
+
+.is-preserve-width,
+.is-preserve-width audio,
+.is-preserve-width canvas,
+.is-preserve-width img,
+.is-preserve-width svg,
+.is-preserve-width video { max-width: none; }
+
+/*
+ * Responsiveness
+ * Corrects `max-width` and `max-height` behavior if padding and border are used
+ */
+
+.is-responsive-width,
+.is-responsive-height { box-sizing: border-box; }
+
+/*
+ * 1. Set a maximum width. `important` needed to override `is-preserve-width img`
+ * 2. Auto scale the height. Only needed if `height` attribute is present
+ */
+
+.is-responsive-width {
+    /* 1 */
+    max-width: 100% !important;
+    /* 2 */
+    height: auto;
+}
+
+/*
+ * 1. Set a maximum height. Only works if the parent element has a fixed height
+ * 2. Auto scale the width. Only needed if `width` attribute is present
+ * 3. Reset max-width, which `img, `video`, `canvas` and  `audio` already have by default
+ */
+
+.is-responsive-height {
+    /* 1 */
+    max-height: 100%;
+    /* 2 */
+    width: auto;
+    /* 3 */
+    max-width: none;
+}
+
+
+/* Border
+ ========================================================================== */
+
+.is-border-circle { border-radius: 50%; }
+.is-border-rounded { border-radius: @border-rounded-border-radius; }
+
+/*
+ * Fix `overflow: hidden` to be ignored with border-radius and CSS transforms in Webkit
+ */
+
+.is-inline-clip[class*='is-border-'] { -webkit-transform: translateZ(0); }
+
+
+/* Box-shadow
+ ========================================================================== */
+
+.is-box-shadow-small { box-shadow: @global-small-box-shadow; }
+.is-box-shadow-medium { box-shadow: @global-medium-box-shadow; }
+.is-box-shadow-large { box-shadow: @global-large-box-shadow; }
+.is-box-shadow-xlarge { box-shadow: @global-xlarge-box-shadow; }
+
+/*
+ * Hover
+ */
+
+[class*='is-box-shadow-hover'] {
+    -webkit-transition: box-shadow @box-shadow-duration ease-in-out;
+    transition: box-shadow @box-shadow-duration ease-in-out;
+}
+
+.is-box-shadow-hover-small:hover { box-shadow: @global-small-box-shadow; }
+.is-box-shadow-hover-medium:hover { box-shadow: @global-medium-box-shadow; }
+.is-box-shadow-hover-large:hover { box-shadow: @global-large-box-shadow; }
+.is-box-shadow-hover-xlarge:hover { box-shadow: @global-xlarge-box-shadow; }
+
+
+/* Box-shadow bottom
+ ========================================================================== */
+
+/*
+ * 1. Set position.
+ * 2. Set style
+ * 3. Blur doesn't work on pseudo elements with negative `z-index` in Edge.
+ *    Solved by using `before` and add position context to child elements.
+ */
+
+@supports (filter: blur(0)) or (-webkit-filter: blur(0)) {
+
+    .is-box-shadow-bottom {
+        display: inline-block;
+        position: relative;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    .is-box-shadow-bottom::before {
+        content: '';
+        /* 1 */
+        position: absolute;
+        bottom: -@box-shadow-bottom-height;
+        left: 0;
+        right: 0;
+        /* 2 */
+        height: @box-shadow-bottom-height;
+        border-radius: @box-shadow-bottom-border-radius;
+        background: @box-shadow-bottom-background;
+        -webkit-filter: blur(@box-shadow-bottom-blur);
+        filter: blur(@box-shadow-bottom-blur);
+        .hook-box-shadow-bottom;
+    }
+
+    /* 3 */
+    .is-box-shadow-bottom > * { position: relative; }
+
+}
+
+
+/* Drop cap
+ ========================================================================== */
+
+.is-dropcap::first-letter,
+.is-dropcap > p:first-of-type::first-letter {
+    display: block;
+    margin-right: @dropcap-margin-right;
+    float: left;
+    font-size: @dropcap-font-size;
+    line-height: 1;
+    .hook-dropcap;
+}
+
+
+/* Leader
+ ========================================================================== */
+
+.is-leader { overflow: hidden; }
+
+/*
+ * 1. Place element in text flow
+ * 2. Never break into a new line
+ * 3. Get a string back with as many repeating characters to fill the container
+ * 4. Prevent wrapping. Overflowing characters will be clipped by the container
+ */
+
+.is-leader-fill::after {
+    /* 1 */
+    display: inline-block;
+    margin-left: @leader-fill-margin-left;
+    /* 2 */
+    width: 0;
+    /* 3 */
+    content: attr(data-fill);
+    /* 4 */
+    white-space: nowrap;
+    .hook-leader;
+}
+
+/*
+ * Hide if media does not match
+ */
+
+.is-leader-fill.is-leader-hide::after { display: none; }
+
+/* Pass fill character to JS */
+.var-leader-fill:before { content: @leader-fill-content; }
+
+
+/* Logo
+ ========================================================================== */
+
+/*
+ * 1. Required for `a`
+ */
+
+.is-logo {
+    font-size: @logo-font-size;
+    font-family: @logo-font-family;
+    color: @logo-color;
+    /* 1 */
+    text-decoration: none;
+    .hook-logo;
+}
+
+/* Hover + Focus */
+.is-logo:hover,
+.is-logo:focus {
+    color: @logo-hover-color;
+    outline: none;
+    /* 1 */
+    text-decoration: none;
+    .hook-logo-hover;
+}
+
+.is-logo-inverse { display: none; }
+
+
+/* SVG
+ ========================================================================== */
+
+/*
+ * 1. Fill all SVG elements with the current text color if no `fill` attribute is set
+ * 2. Set the fill and stroke color of all SVG elements to the current text color
+ * 3. Fix for uppercase attribute names in Edge. Will be fixed in Windows 10 builds 16251+
+ */
+
+/* 1 */
+.is-svg,
+/* 2 */
+.is-svg:not(.is-preserve) [fill*='#']:not(.is-preserve),
+.is-svg:not(.is-preserve) [FILL*='#']:not(.is-preserve) { fill: currentcolor; } // 3
+.is-svg:not(.is-preserve) [stroke*='#']:not(.is-preserve),
+.is-svg:not(.is-preserve) [STROKE*='#']:not(.is-preserve) { stroke: currentcolor; } // 3
+
+/*
+ * Fix Firefox blurry SVG rendering: https://bugzilla.mozilla.org/show_bug.cgi?id=1046835
+ */
+
+.is-svg { transform: translate(0,0); }
+
+
+/* Disabled State
+ ========================================================================== */
+
+.is-disabled { pointer-events: none; }
+
+
+/* Drag State
+ ========================================================================== */
+
+/*
+ * 1. Needed if moving over elements with have their own cursor on hover, e.g. links or buttons
+ * 2. Fix dragging over iframes
+ */
+
+.is-drag,
+/* 1 */
+.is-drag * { cursor: move; }
+
+/* 2 */
+.is-drag iframe { pointer-events: none; }
+
+
+/* Dragover State
+ ========================================================================== */
+
+/*
+ * Create a box-shadow when dragging a file over the upload area
+ */
+
+.is-dragover { box-shadow: @dragover-box-shadow; }
+
+
+/* Blend modes
+ ========================================================================== */
+
+.is-blend-multiply { mix-blend-mode: multiply; }
+.is-blend-screen { mix-blend-mode: screen; }
+.is-blend-overlay { mix-blend-mode: overlay; }
+.is-blend-darken { mix-blend-mode: darken; }
+.is-blend-lighten { mix-blend-mode: lighten; }
+.is-blend-color-dodge { mix-blend-mode: color-dodge; }
+.is-blend-color-burn { mix-blend-mode: color-burn; }
+.is-blend-hard-light { mix-blend-mode: hard-light; }
+.is-blend-soft-light { mix-blend-mode: soft-light; }
+.is-blend-difference { mix-blend-mode: difference; }
+.is-blend-exclusion { mix-blend-mode: exclusion; }
+.is-blend-hue { mix-blend-mode: hue; }
+.is-blend-saturation { mix-blend-mode: saturation; }
+.is-blend-color { mix-blend-mode: color; }
+.is-blend-luminosity { mix-blend-mode: luminosity; }
+
+
+/* Transform
+========================================================================== */
+
+.is-transform-center {
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+/* Transform Origin
+========================================================================== */
+
+.is-transform-origin-top-left {
+     -webkit-transform-origin: 0 0;
+     transform-origin: 0 0;
+}
+
+.is-transform-origin-top-center {
+     -webkit-transform-origin: 50% 0;
+     transform-origin: 50% 0;
+}
+
+.is-transform-origin-top-right {
+     -webkit-transform-origin: 100% 0;
+     transform-origin: 100% 0;
+}
+
+.is-transform-origin-center-left {
+     -webkit-transform-origin: 0 50%;
+     transform-origin: 0 50%;
+}
+
+.is-transform-origin-center-right {
+     -webkit-transform-origin: 100% 50%;
+     transform-origin: 100% 50%;
+}
+
+.is-transform-origin-bottom-left {
+     -webkit-transform-origin: 0 100%;
+     transform-origin: 0 100%;
+}
+
+.is-transform-origin-bottom-center {
+     -webkit-transform-origin: 50% 100%;
+     transform-origin: 50% 100%;
+}
+
+.is-transform-origin-bottom-right {
+     -webkit-transform-origin: 100% 100%;
+     transform-origin: 100% 100%;
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-utility-misc;
+
+.hook-panel-scrollable() {}
+.hook-box-shadow-bottom() {}
+.hook-dropcap() {}
+.hook-leader() {}
+.hook-logo() {}
+.hook-logo-hover() {}
+.hook-utility-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-logo-color:                           @inverse-global-color;
+@inverse-logo-hover-color:                     @inverse-global-color;
+
+.hook-inverse() {
+
+    .is-dropcap::first-letter,
+    .is-dropcap p:first-of-type::first-letter {
+        .hook-inverse-dropcap;
+    }
+
+    .is-leader-fill {
+        .hook-inverse-leader;
+    }
+
+    .is-logo {
+        color: @inverse-logo-color;
+        .hook-inverse-logo;
+    }
+
+    .is-logo:hover,
+    .is-logo:focus {
+        color: @inverse-logo-hover-color;
+        .hook-inverse-logo-hover;
+    }
+
+    .is-logo > :not(.is-logo-inverse):not(:only-of-type) { display: none; }
+    .is-logo-inverse { display: inline; }
+
+}
+
+.hook-inverse-dropcap() {}
+.hook-inverse-leader() {}
+.hook-inverse-logo() {}
+.hook-inverse-logo-hover() {}

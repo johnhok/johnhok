@@ -1,0 +1,367 @@
+// Name:            Grid
+// Description:     Component to create responsive, fluid and nestable grids
+//
+// Component:       `is-grid`
+//
+// Modifiers:       `is-grid-small`
+//                  `is-grid-medium`
+//                  `is-grid-large`
+//                  `is-grid-collapse`
+//                  `is-grid-divider`
+//                  `is-grid-match`
+//                  `is-grid-stack`
+//                  `is-grid-margin`
+//                  `is-grid-margin-small`
+//                  `is-grid-margin-medium`
+//                  `is-grid-margin-large`
+//                  `is-grid-margin-collapse`
+//
+// Sub-modifier:    `is-grid-item-match`
+//
+// States:          `is-first-column`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@grid-gutter-horizontal:                        @global-gutter;
+@grid-gutter-vertical:                          @grid-gutter-horizontal;
+@grid-gutter-horizontal-l:                      @global-medium-gutter;
+@grid-gutter-vertical-l:                        @grid-gutter-horizontal-l;
+
+@grid-small-gutter-horizontal:                  @global-small-gutter;
+@grid-small-gutter-vertical:                    @grid-small-gutter-horizontal;
+
+@grid-medium-gutter-horizontal:                 @global-gutter;
+@grid-medium-gutter-vertical:                   @grid-medium-gutter-horizontal;
+
+@grid-large-gutter-horizontal:                  @global-medium-gutter;
+@grid-large-gutter-vertical:                    @grid-large-gutter-horizontal;
+@grid-large-gutter-horizontal-l:                @global-large-gutter;
+@grid-large-gutter-vertical-l:                  @grid-large-gutter-horizontal-l;
+
+@grid-divider-border-width:                     @global-border-width;
+@grid-divider-border:                           @global-border;
+
+
+/* ========================================================================
+   Component: Grid
+ ========================================================================== */
+
+/*
+ * 1. Allow cells to wrap into the next line
+ * 2. Reset list
+ */
+
+.is-grid {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /* 1 */
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /* 2 */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/*
+ * Grid cell
+ * Note: Space is allocated solely based on content dimensions, but shrinks: 0 1 auto
+ * Reset margin for e.g. paragraphs
+ */
+
+.is-grid > * { margin: 0; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.is-grid > * > :last-child { margin-bottom: 0; }
+
+
+/* Gutter
+ ========================================================================== */
+
+/*
+ * Default
+ */
+
+/* Horizontal */
+.is-grid { margin-left: -@grid-gutter-horizontal; }
+.is-grid > * { padding-left: @grid-gutter-horizontal; }
+
+/* Vertical */
+.is-grid + .is-grid,
+.is-grid > .is-grid-margin,
+* + .is-grid-margin { margin-top: @grid-gutter-vertical; }
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    /* Horizontal */
+    .is-grid { margin-left: -@grid-gutter-horizontal-l; }
+    .is-grid > * { padding-left: @grid-gutter-horizontal-l; }
+
+    /* Vertical */
+    .is-grid + .is-grid,
+    .is-grid > .is-grid-margin,
+    * + .is-grid-margin { margin-top: @grid-gutter-vertical-l; }
+
+}
+
+/*
+ * Small
+ */
+
+/* Horizontal */
+.is-grid-small { margin-left: -@grid-small-gutter-horizontal; }
+.is-grid-small > * { padding-left: @grid-small-gutter-horizontal; }
+
+/* Vertical */
+.is-grid + .is-grid-small,
+.is-grid-small > .is-grid-margin,
+* + .is-grid-margin-small { margin-top: @grid-small-gutter-vertical; }
+
+/*
+ * Medium
+ */
+
+/* Horizontal */
+.is-grid-medium { margin-left: -@grid-medium-gutter-horizontal; }
+.is-grid-medium > * { padding-left: @grid-medium-gutter-horizontal; }
+
+/* Vertical */
+.is-grid + .is-grid-medium,
+.is-grid-medium > .is-grid-margin,
+* + .is-grid-margin-medium { margin-top: @grid-medium-gutter-vertical; }
+
+/*
+ * Large
+ */
+
+/* Horizontal */
+.is-grid-large { margin-left: -@grid-large-gutter-horizontal; }
+.is-grid-large > * { padding-left: @grid-large-gutter-horizontal; }
+
+/* Vertical */
+.is-grid + .is-grid-large,
+.is-grid-large > .is-grid-margin,
+* + .is-grid-margin-large { margin-top: @grid-large-gutter-vertical; }
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    /* Horizontal */
+    .is-grid-large { margin-left: -@grid-large-gutter-horizontal-l; }
+    .is-grid-large > * { padding-left: @grid-large-gutter-horizontal-l; }
+
+    /* Vertical */
+    .is-grid + .is-grid-large,
+    .is-grid-large > .is-grid-margin,
+    * + .is-grid-margin-large { margin-top: @grid-large-gutter-vertical-l; }
+
+}
+
+/*
+ * Collapse
+ */
+
+/* Horizontal */
+.is-grid-collapse { margin-left: 0; }
+.is-grid-collapse > * { padding-left: 0; }
+
+/* Vertical */
+.is-grid + .is-grid-collapse,
+.is-grid-collapse > .is-grid-margin { margin-top: 0; }
+
+
+/* Divider
+ ========================================================================== */
+
+.is-grid-divider > * { position: relative; }
+
+.is-grid-divider > :not(.is-first-column)::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: @grid-divider-border-width solid @grid-divider-border;
+}
+
+/* Vertical */
+.is-grid-divider.is-grid-stack > .is-grid-margin::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    border-top: @grid-divider-border-width solid @grid-divider-border;
+}
+
+/*
+ * Default
+ */
+
+/* Horizontal */
+.is-grid-divider { margin-left: -(@grid-gutter-horizontal * 2); }
+.is-grid-divider > * { padding-left: (@grid-gutter-horizontal * 2); }
+
+.is-grid-divider > :not(.is-first-column)::before { left: @grid-gutter-horizontal; }
+
+/* Vertical */
+.is-grid-divider.is-grid-stack > .is-grid-margin { margin-top: (@grid-gutter-vertical * 2); }
+
+.is-grid-divider.is-grid-stack > .is-grid-margin::before {
+    top: -@grid-gutter-vertical;
+    left: (@grid-gutter-horizontal * 2);
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    /* Horizontal */
+    .is-grid-divider { margin-left: -(@grid-gutter-horizontal-l * 2); }
+    .is-grid-divider > * { padding-left: (@grid-gutter-horizontal-l * 2); }
+
+    .is-grid-divider > :not(.is-first-column)::before { left: @grid-gutter-horizontal-l; }
+
+    /* Vertical */
+    .is-grid-divider.is-grid-stack > .is-grid-margin { margin-top: (@grid-gutter-vertical-l * 2); }
+
+    .is-grid-divider.is-grid-stack > .is-grid-margin::before {
+        top: -@grid-gutter-vertical-l;
+        left: (@grid-gutter-horizontal-l * 2);
+    }
+
+}
+
+/*
+ * Small
+ */
+
+/* Horizontal */
+.is-grid-divider.is-grid-small { margin-left: -(@grid-small-gutter-horizontal * 2); }
+.is-grid-divider.is-grid-small > * { padding-left: (@grid-small-gutter-horizontal * 2); }
+
+.is-grid-divider.is-grid-small > :not(.is-first-column)::before { left: @grid-small-gutter-horizontal; }
+
+/* Vertical */
+.is-grid-divider.is-grid-small.is-grid-stack > .is-grid-margin { margin-top: (@grid-small-gutter-vertical * 2); }
+
+.is-grid-divider.is-grid-small.is-grid-stack > .is-grid-margin::before {
+    top: -@grid-small-gutter-vertical;
+    left: (@grid-small-gutter-horizontal * 2);
+}
+
+/*
+ * Medium
+ */
+
+/* Horizontal */
+.is-grid-divider.is-grid-medium { margin-left: -(@grid-medium-gutter-horizontal * 2); }
+.is-grid-divider.is-grid-medium > * { padding-left: (@grid-medium-gutter-horizontal * 2); }
+
+.is-grid-divider.is-grid-medium > :not(.is-first-column)::before { left: @grid-medium-gutter-horizontal; }
+
+/* Vertical */
+.is-grid-divider.is-grid-medium.is-grid-stack > .is-grid-margin { margin-top: (@grid-medium-gutter-vertical * 2); }
+
+.is-grid-divider.is-grid-medium.is-grid-stack > .is-grid-margin::before {
+    top: -@grid-medium-gutter-vertical;
+    left: (@grid-medium-gutter-horizontal * 2);
+}
+
+/*
+ * Large
+ */
+
+/* Horizontal */
+.is-grid-divider.is-grid-large { margin-left: -(@grid-large-gutter-horizontal * 2); }
+.is-grid-divider.is-grid-large > * { padding-left: (@grid-large-gutter-horizontal * 2); }
+
+.is-grid-divider.is-grid-large > :not(.is-first-column)::before { left: @grid-large-gutter-horizontal; }
+
+/* Vertical */
+.is-grid-divider.is-grid-large.is-grid-stack > .is-grid-margin { margin-top: (@grid-large-gutter-vertical * 2); }
+
+.is-grid-divider.is-grid-large.is-grid-stack > .is-grid-margin::before {
+    top: -@grid-large-gutter-vertical;
+    left: (@grid-large-gutter-horizontal * 2);
+}
+
+/* Desktop and bigger */
+@media (min-width: @breakpoint-large) {
+
+    /* Horizontal */
+    .is-grid-divider.is-grid-large { margin-left: -(@grid-large-gutter-horizontal-l * 2); }
+    .is-grid-divider.is-grid-large > * { padding-left: (@grid-large-gutter-horizontal-l * 2); }
+
+    .is-grid-divider.is-grid-large > :not(.is-first-column)::before { left: @grid-large-gutter-horizontal-l; }
+
+    /* Vertical */
+    .is-grid-divider.is-grid-large.is-grid-stack > .is-grid-margin { margin-top: (@grid-large-gutter-vertical-l * 2); }
+
+    .is-grid-divider.is-grid-large.is-grid-stack > .is-grid-margin::before {
+        top: -@grid-large-gutter-vertical-l;
+        left: (@grid-large-gutter-horizontal-l * 2);
+    }
+
+}
+
+
+/* Match child of a grid cell
+ ========================================================================== */
+
+/*
+ * Behave like a block element
+ * 1. Wrap into the next line
+ * 2. Take the full width, at least 100%. Only if no class from the Width component is set.
+ * 3. Expand width even if larger than 100%, e.g. because of negative margin (Needed for nested grids)
+ */
+
+.is-grid-match > *,
+.is-grid-item-match {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    /* 1 */
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.is-grid-match > * > :not([class*='is-width']),
+.is-grid-item-match > :not([class*='is-width']) {
+    /* 2 */
+    box-sizing: border-box;
+    width: 100%;
+    /* 3 */
+    -ms-flex: auto;
+    -webkit-flex: auto;
+    flex: auto;
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-grid-misc;
+
+.hook-grid-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+@inverse-grid-divider-border:                  @inverse-global-border;
+
+.hook-inverse() {
+
+    .is-grid-divider > :not(.is-first-column)::before { border-left-color: @inverse-grid-divider-border; }
+    .is-grid-divider.is-grid-stack > .is-grid-margin::before { border-top-color: @inverse-grid-divider-border; }
+
+}

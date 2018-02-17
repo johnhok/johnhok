@@ -1,0 +1,47 @@
+// Name:            Switcher
+// Description:     Component to navigate through different content panes
+//
+// Component:       `is-switcher`
+//
+// States:          `is-active`
+//
+// ========================================================================
+
+
+/* ========================================================================
+   Component: Switcher
+ ========================================================================== */
+
+/*
+ * Reset list
+ */
+
+.is-switcher {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+/* Items
+ ========================================================================== */
+
+/*
+ * Hide not active items
+ */
+
+.is-switcher > :not(.is-active) { display: none; }
+
+/*
+ * Remove margin from the last-child
+ */
+
+.is-switcher > * > :last-child { margin-bottom: 0; }
+
+
+// Hooks
+// ========================================================================
+
+.hook-switcher-misc;
+
+.hook-switcher-misc() {}

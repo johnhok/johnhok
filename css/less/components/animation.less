@@ -1,0 +1,638 @@
+// Name:            Animation
+// Description:     Utilities for keyframe animations
+//
+// Component:       `is-animation-*`
+//
+// Modifiers:       `is-animation-reverse`
+//                  `is-animation-fast`
+//                  `is-animation-fade`
+//                  `is-animation-scale-up`
+//                  `is-animation-scale-down`
+//                  `is-animation-slide-top-*`
+//                  `is-animation-slide-bottom-*`
+//                  `is-animation-slide-left-*`
+//                  `is-animation-slide-right-*`
+//                  `is-animation-kenburns`
+//                  `is-animation-shake`
+//
+// Sub-objects:     `is-animation-toggle`
+//
+// States:          `is-hover`
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+
+@animation-duration:                            0.5s;
+@animation-fade-duration:                       0.8s;
+@animation-kenburns-duration:                   15s;
+@animation-fast-duration:                       0.1s;
+
+@animation-slide-small-translate:               10px;
+@animation-slide-medium-translate:              50px;
+
+
+/* ========================================================================
+   Component: Animation
+ ========================================================================== */
+
+[class*='is-animation-'] {
+    -webkit-animation-duration: @animation-duration;
+    animation-duration: @animation-duration;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+
+/* Direction modifier
+ ========================================================================== */
+
+.is-animation-reverse {
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+}
+
+
+/* Animations for scrollspy
+ ========================================================================== */
+
+/*
+ * Fade
+ */
+
+.is-animation-fade {
+    -webkit-animation-name: is-fade;
+    animation-name: is-fade;
+    -webkit-animation-duration: @animation-fade-duration;
+    animation-duration: @animation-fade-duration;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/*
+ * Scale
+ */
+
+.is-animation-scale-up {
+    -webkit-animation-name: is-fade-scale-02;
+    animation-name: is-fade-scale-02;
+}
+
+.is-animation-scale-down {
+    -webkit-animation-name: is-fade-scale-18;
+    animation-name: is-fade-scale-18;
+}
+
+/*
+ * Slide
+ */
+
+.is-animation-slide-top {
+    -webkit-animation-name: is-fade-top;
+    animation-name: is-fade-top;
+}
+
+.is-animation-slide-bottom {
+    -webkit-animation-name: is-fade-bottom;
+    animation-name: is-fade-bottom;
+}
+
+.is-animation-slide-left {
+    -webkit-animation-name: is-fade-left;
+    animation-name: is-fade-left;
+}
+
+.is-animation-slide-right {
+    -webkit-animation-name: is-fade-right;
+    animation-name: is-fade-right;
+}
+
+/*
+ * Slide Small
+ */
+
+.is-animation-slide-top-small {
+    -webkit-animation-name: is-fade-top-small;
+    animation-name: is-fade-top-small;
+}
+
+.is-animation-slide-bottom-small {
+    -webkit-animation-name: is-fade-bottom-small;
+    animation-name: is-fade-bottom-small;
+}
+
+.is-animation-slide-left-small {
+    -webkit-animation-name: is-fade-left-small;
+    animation-name: is-fade-left-small;
+}
+
+.is-animation-slide-right-small {
+    -webkit-animation-name: is-fade-right-small;
+    animation-name: is-fade-right-small;
+}
+
+/*
+ * Slide Medium
+ */
+
+.is-animation-slide-top-medium {
+    -webkit-animation-name: is-fade-top-medium;
+    animation-name: is-fade-top-medium;
+}
+
+.is-animation-slide-bottom-medium {
+    -webkit-animation-name: is-fade-bottom-medium;
+    animation-name: is-fade-bottom-medium;
+}
+
+.is-animation-slide-left-medium {
+    -webkit-animation-name: is-fade-left-medium;
+    animation-name: is-fade-left-medium;
+}
+
+.is-animation-slide-right-medium {
+    -webkit-animation-name: is-fade-right-medium;
+    animation-name: is-fade-right-medium;
+}
+
+/*
+ * Kenburns
+ */
+
+.is-animation-kenburns {
+    -webkit-animation-name: is-scale-kenburns;
+    animation-name: is-scale-kenburns;
+    -webkit-animation-duration: @animation-kenburns-duration;
+    animation-duration: @animation-kenburns-duration;
+}
+
+/*
+ * Shake
+ */
+
+.is-animation-shake {
+    -webkit-animation-name: is-shake;
+    animation-name: is-shake;
+}
+
+
+/* Duration modifier
+ ========================================================================== */
+
+.is-animation-fast {
+    -webkit-animation-duration: @animation-fast-duration;
+    animation-duration: @animation-fast-duration;
+}
+
+
+/* Enable animation only on hover
+========================================================================== */
+
+/*
+ * Note: Firefox and IE needs this because animations are not triggered when switching between display `none` and `block`
+ */
+
+.is-animation-toggle:not(:hover):not(.is-hover) [class*='is-animation-'] {
+    -webkit-animation-name: none;
+    animation-name: none;
+}
+
+
+/* Keyframes used by animation classes
+ ========================================================================== */
+
+/*
+ * Fade
+ */
+
+@-webkit-keyframes is-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes is-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/*
+ * Slide Top
+ */
+
+@-webkit-keyframes is-fade-top {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes is-fade-top {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Bottom
+ */
+
+@-webkit-keyframes is-fade-bottom {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes is-fade-bottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Left
+ */
+
+@-webkit-keyframes is-fade-left {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes is-fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Right
+ */
+
+@-webkit-keyframes is-fade-right {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes is-fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Top Small
+ */
+
+@-webkit-keyframes is-fade-top-small {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes is-fade-top-small {
+    0% {
+        opacity: 0;
+        transform: translateY(-@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Bottom Small
+ */
+
+@-webkit-keyframes is-fade-bottom-small {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes is-fade-bottom-small {
+    0% {
+        opacity: 0;
+        transform: translateY(@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Left Small
+ */
+
+@-webkit-keyframes is-fade-left-small {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes is-fade-left-small {
+    0% {
+        opacity: 0;
+        transform: translateX(-@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Right Small
+ */
+
+@-webkit-keyframes is-fade-right-small {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes is-fade-right-small {
+    0% {
+        opacity: 0;
+        transform: translateX(@animation-slide-small-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Top Medium
+ */
+
+@-webkit-keyframes is-fade-top-medium {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(-@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes is-fade-top-medium {
+    0% {
+        opacity: 0;
+        transform: translateY(-@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Bottom Medium
+ */
+
+@-webkit-keyframes is-fade-bottom-medium {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0);
+    }
+}
+
+@keyframes is-fade-bottom-medium {
+    0% {
+        opacity: 0;
+        transform: translateY(@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*
+ * Slide Left Medium
+ */
+
+@-webkit-keyframes is-fade-left-medium {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes is-fade-left-medium {
+    0% {
+        opacity: 0;
+        transform: translateX(-@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Slide Right Medium
+ */
+
+@-webkit-keyframes is-fade-right-medium {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0);
+    }
+}
+
+@keyframes is-fade-right-medium {
+    0% {
+        opacity: 0;
+        transform: translateX(@animation-slide-medium-translate);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/*
+ * Scale Up
+ */
+
+@-webkit-keyframes is-fade-scale-02 {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(0.2);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes is-fade-scale-02 {
+    0% {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*
+ * Scale Down
+ */
+
+@-webkit-keyframes is-fade-scale-18 {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale(1.8);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+    }
+}
+
+@keyframes is-fade-scale-18 {
+    0% {
+        opacity: 0;
+        transform: scale(1.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/*
+ * Kenburns
+ */
+
+@-webkit-keyframes is-scale-kenburns {
+    0% { -webkit-transform: scale(1); }
+    100% { -webkit-transform: scale(1.2); }
+}
+
+@keyframes is-scale-kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+}
+
+/*
+ * Shake
+ */
+
+@-webkit-keyframes is-shake {
+    0%, 100% { -webkit-transform: translateX(0); }
+    10% { -webkit-transform: translateX(-9px); }
+    20% { -webkit-transform: translateX(8px); }
+    30% { -webkit-transform: translateX(-7px); }
+    40% { -webkit-transform: translateX(6px); }
+    50% { -webkit-transform: translateX(-5px); }
+    60% { -webkit-transform: translateX(4px); }
+    70% { -webkit-transform: translateX(-3px); }
+    80% { -webkit-transform: translateX(2px); }
+    90% { -webkit-transform: translateX(-1px); }
+}
+
+@keyframes is-shake {
+    0%, 100% { transform: translateX(0); }
+    10% { transform: translateX(-9px); }
+    20% { transform: translateX(8px); }
+    30% { transform: translateX(-7px); }
+    40% { transform: translateX(6px); }
+    50% { transform: translateX(-5px); }
+    60% { transform: translateX(4px); }
+    70% { transform: translateX(-3px); }
+    80% { transform: translateX(2px); }
+    90% { transform: translateX(-1px); }
+}
+
+
+// Hooks
+// ========================================================================
+
+.hook-animation-misc;
+
+.hook-animation-misc() {}

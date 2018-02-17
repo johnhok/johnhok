@@ -1,0 +1,61 @@
+//
+// Component: Label
+//
+// ========================================================================
+
+
+// Variables
+// ========================================================================
+@label-warning-background:                      @color-yellow;
+@label-warning-color:                           @color-dark-blue;
+//
+// New
+//
+
+@label-border-radius:                           2px;
+@label-text-transform:                          none;
+
+
+// Component
+// ========================================================================
+
+.hook-label() {
+    text-transform: @label-text-transform;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    border-radius: @border-radius-small;
+    font-family: @font-graphik-medium;
+    vertical-align: unset;
+}
+
+
+// Color modifiers
+// ========================================================================
+
+.hook-label-success() {
+  background-color:                      @color-main !important;
+  color:                                 @color-white !important;
+  padding:                               2px 16px;
+}
+
+.hook-label-warning() {
+  background-color:                      @color-yellow !important;
+  color:                                 @color-dark-blue !important;
+}
+
+.hook-label-danger() {
+  background-color:                      @color-orange !important;
+  color:                                 @color-white !important;
+}
+
+
+// Miscellaneous
+// ========================================================================
+
+.hook-label-misc() {}
+
+
+// Inverse
+// ========================================================================
+
+.hook-inverse-label() {}
